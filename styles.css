@@ -90,7 +90,7 @@ header nav a:hover {
     background-color: #9d7651;
     margin-left: 5px;
     border-radius: 2px;
-    animation: fadeBlink 1s infinite;
+    animation: fadeBlink 0.7s infinite;
 }
 
 @keyframes fadeBlink {

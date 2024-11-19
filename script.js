@@ -5,6 +5,7 @@ const quotes = [
 ];
 
 const quoteText = document.getElementById('quote-text');
+const cursor = document.getElementById('cursor');
 let currentQuoteIndex = 0;
 
 function typeQuote(quote) {
@@ -19,7 +20,7 @@ function typeQuote(quote) {
 
             // Brief pause after punctuation
             const isPunctuation = ['.', ',', ';', '!', '?'].includes(quote[charIndex - 1]);
-            setTimeout(typeNextChar, isPunctuation ? charTypingInterval * 2 : charTypingInterval);
+            setTimeout(typeNextChar, isPunctuation ? charTypingInterval * 1.5 : charTypingInterval);
         } else {
             setTimeout(changeQuote, 3000); // Pause before changing quote
         }
