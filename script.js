@@ -1,39 +1,39 @@
+// Quotes to display
 const quotes = [
     "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
     "Software is like sex: it's better when it's free --Linus Torvalds",
     "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
+// Selecting the elements where the quote will be typed
 const quoteText = document.getElementById('quote-text');
 const cursor = document.getElementById('cursor');
-let currentQuoteIndex = 0;
 
+// Function to type out a quote
 function typeQuote(quote) {
-    const totalTypingDuration = 5000; // 5 seconds
-    const charTypingInterval = totalTypingDuration / quote.length; // Adjust speed
-    let charIndex = 0;
+    quoteText.textContent = '';  // Clear previous quote
+    let index = 0;
+    const typingSpeed = 5000;  // Time to complete typing the quote (in milliseconds)
+    const intervalTime = typingSpeed / quote.length;  // Calculate the speed based on quote length
 
-    function typeNextChar() {
-        if (charIndex < quote.length) {
-            quoteText.textContent += quote[charIndex];
-            charIndex++;
-
-            // Brief pause after punctuation
-            const isPunctuation = ['.', ',', ';', '!', '?'].includes(quote[charIndex - 1]);
-            setTimeout(typeNextChar, isPunctuation ? charTypingInterval * 1.5 : charTypingInterval);
-        } else {
-            setTimeout(changeQuote, 3000); // Pause before changing quote
+    const typingInterval = setInterval(() => {
+        quoteText.textContent += quote[index];
+        index++;
+        if (index === quote.length) {
+            clearInterval(typingInterval);
+            setTimeout(changeQuote, 3000); // Wait 3 seconds after quote finishes before changing
         }
-    }
-
-    typeNextChar();
+    }, intervalTime);
 }
 
+// Function to change the quote after 3 seconds
 function changeQuote() {
-    quoteText.textContent = ''; // Clear current quote
-    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Cycle through quotes
-    typeQuote(quotes[currentQuoteIndex]);
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    typeQuote(quotes[randomIndex]);
 }
 
-// Start typing the first quote
-typeQuote(quotes[currentQuoteIndex]);
+// Start by typing the first quote
+typeQuote(quotes[0]);
+
+// Set the quote typing to change every 8 seconds
+setInterval(changeQuote, 8000);
