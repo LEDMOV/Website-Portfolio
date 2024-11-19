@@ -57,7 +57,7 @@
             // Function to sort posts by date
             function sortPosts(order) {
                 const sortedPosts = [...posts].sort((a, b) => {
-                    const dateA = new Date(a.date.split("/").reverse().join("-"));
+                    const dateA = new Date(a.date.split("/").reverse().join("-")); // Convert to YYYY-MM-DD format
                     const dateB = new Date(b.date.split("/").reverse().join("-"));
                     return order === 'asc' ? dateA - dateB : dateB - dateA;
                 });
