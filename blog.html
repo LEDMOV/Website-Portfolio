@@ -6,13 +6,12 @@
     <title>Blog - My Achievements</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        // JavaScript to handle sorting and searching
         document.addEventListener("DOMContentLoaded", function() {
             const postsContainer = document.getElementById("posts-container");
             const searchInput = document.getElementById("search-input");
             const sortSelect = document.getElementById("sort-select");
 
-            // Array of blog posts (you can add more posts here)
+            // Blog posts array
             const posts = [
                 {
                     title: "// Start or end of an era?",
@@ -31,13 +30,18 @@
                 }
             ];
 
+            // Function to parse DD/MM/YY into a sortable format (YYYYMMDD as a number)
+            function parseDate(date) {
+                const [day, month, year] = date.split("/").map(Number);
+                return year * 10000 + month * 100 + day; // Combine into YYYYMMDD format
+            }
+
             // Function to render posts
             function renderPosts(postsToRender) {
                 postsContainer.innerHTML = '';
                 postsToRender.forEach(post => {
                     const postElement = document.createElement("div");
                     postElement.classList.add("achievement-card");
-
                     postElement.innerHTML = `
                         <h2 class="achievement-title">${post.title}</h2>
                         <p class="achievement-date">${post.date}</p>
@@ -57,8 +61,8 @@
             // Function to sort posts by date
             function sortPosts(order) {
                 const sortedPosts = [...posts].sort((a, b) => {
-                    const dateA = new Date(a.date.split("/").reverse().join("-")); // Convert to YYYY-MM-DD format
-                    const dateB = new Date(b.date.split("/").reverse().join("-"));
+                    const dateA = parseDate(a.date);
+                    const dateB = parseDate(b.date);
                     return order === 'asc' ? dateA - dateB : dateB - dateA;
                 });
                 renderPosts(sortedPosts);
