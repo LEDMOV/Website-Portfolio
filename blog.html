@@ -5,80 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - My Achievements</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const postsContainer = document.getElementById("posts-container");
-            const searchInput = document.getElementById("search-input");
-            const sortSelect = document.getElementById("sort-select");
-
-            // Blog posts array
-            const posts = [
-                {
-                    title: "// Start or end of an era?",
-                    date: "19/11/24",
-                    description: "Just made this simple website to document my life, School career and Qualifications. Makes it easy for me to look back and see in what detail I've done in the past, but I hope it also gives employers or researchers an easy way to get into my head, none of that mind games candidates love to play with employers.",
-                },
-                {
-                    title: "Exploring Web Development",
-                    date: "15/11/24",
-                    description: "Learning HTML, CSS, and JavaScript...",
-                },
-                {
-                    title: "A Day in the Life of a Student",
-                    date: "12/11/24",
-                    description: "Talking about my experience in school and balancing life...",
-                }
-            ];
-
-            // Function to parse DD/MM/YY into a sortable format (YYYYMMDD as a number)
-            function parseDate(date) {
-                const [day, month, year] = date.split("/").map(Number);
-                return year * 10000 + month * 100 + day; // Combine into YYYYMMDD format
-            }
-
-            // Function to render posts
-            function renderPosts(postsToRender) {
-                postsContainer.innerHTML = '';
-                postsToRender.forEach(post => {
-                    const postElement = document.createElement("div");
-                    postElement.classList.add("achievement-card");
-                    postElement.innerHTML = `
-                        <h2 class="achievement-title">${post.title}</h2>
-                        <p class="achievement-date">${post.date}</p>
-                        <p class="achievement-description">${post.description}</p>
-                    `;
-                    postsContainer.appendChild(postElement);
-                });
-            }
-
-            // Function to search posts by title
-            function searchPosts() {
-                const searchText = searchInput.value.toLowerCase();
-                const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(searchText));
-                renderPosts(filteredPosts);
-            }
-
-            // Function to sort posts by date
-            function sortPosts(order) {
-                const sortedPosts = [...posts].sort((a, b) => {
-                    const dateA = parseDate(a.date);
-                    const dateB = parseDate(b.date);
-                    return order === 'asc' ? dateA - dateB : dateB - dateA;
-                });
-                renderPosts(sortedPosts);
-            }
-
-            // Event listeners
-            searchInput.addEventListener("input", searchPosts);
-            sortSelect.addEventListener("change", function() {
-                sortPosts(sortSelect.value);
-            });
-
-            // Initial setup: Sort posts in descending order and set dropdown
-            sortPosts('desc');
-            sortSelect.value = 'desc'; // Set dropdown to Descending
-        });
-    </script>
+    <script defer src="blog.js"></script>
 </head>
 <body>
     <header>
@@ -89,23 +16,9 @@
             <a href="schoollife.html">School Life</a>
         </nav>
     </header>
-
-    <main class="container">
-        <!-- Search and Sort Section -->
-        <div class="search-sort">
-            <input type="text" id="search-input" placeholder="Search blog titles..." />
-            <select id="sort-select">
-                <option value="asc">Sort by Date (Asc)</option>
-                <option value="desc">Sort by Date (Desc)</option>
-            </select>
-        </div>
-
-        <!-- Blog Post Container -->
-        <div id="posts-container">
-            <!-- Blog posts will be injected here by JavaScript -->
-        </div>
+    <main class="container" id="blog-posts">
+        <!-- Blog posts will be dynamically injected here -->
     </main>
-
     <footer>
         <p>Designed by Alfie Corthine &copy; 2024</p>
     </footer>

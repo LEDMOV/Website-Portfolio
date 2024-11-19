@@ -73,6 +73,11 @@ header nav a:hover {
 .achievement-description {
     font-size: 1rem;
     line-height: 1.6;
+    margin-top: 1rem;
+
+    /* Added rules for indent and spacing */
+    text-indent: 2rem; /* Indent first line of each paragraph */
+    margin-bottom: 1.5rem; /* Add space between paragraphs */
 }
 
 .btn {
