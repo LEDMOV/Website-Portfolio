@@ -15,7 +15,7 @@ function typeQuote(quote) {
 
     function typeNextChar() {
         if (charIndex < quote.length) {
-            quoteText.innerHTML += quote[charIndex];
+            quoteText.textContent += quote[charIndex];
             charIndex++;
 
             // Brief pause after punctuation
@@ -30,7 +30,7 @@ function typeQuote(quote) {
 }
 
 function changeQuote() {
-    quoteText.innerHTML = ''; // Clear current quote
+    quoteText.textContent = ''; // Clear current quote
     currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Cycle through quotes
     typeQuote(quotes[currentQuoteIndex]);
 }
