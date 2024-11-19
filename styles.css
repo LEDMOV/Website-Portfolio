@@ -7,12 +7,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #d1bba6;  /* Changed background color to off-white/beige */
+    background-color: #e7dcd1;  /* Off-white/beige background */
     color: #333;
 }
 
 header {
-    background-color: #b59270;  /* Changed header banner to the new brownish color */
+    background-color: #9d7651;  /* Banner color */
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -61,7 +61,7 @@ header nav a:hover {
 .achievement-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #9d7651;  /* Changed to match the new brownish color */
+    color: #9d7651;  /* Match color with banner */
 }
 
 .achievement-date {
@@ -74,8 +74,6 @@ header nav a:hover {
     font-size: 1rem;
     line-height: 1.6;
     margin-top: 1rem;
-
-    /* Indentation and spacing */
     text-indent: 2rem;
     margin-bottom: 1.5rem;
 }
@@ -87,13 +85,13 @@ header nav a:hover {
     font-size: 1rem;
     text-decoration: none;
     color: #fff;
-    background-color: #aa815a;  /* Button background changed to the new brownish color */
+    background-color: #9d7651;  /* Button color */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #7f5f3a;  /* Slightly darker shade for hover */
+    background-color: #7f5f3a;  /* Darker hover color */
 }
 
 footer {
@@ -101,6 +99,20 @@ footer {
     padding: 1rem 0;
     background-color: #f1f1f1;
     color: #6c757d;
+}
+
+/* Quote Section Styling */
+#quote-section {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#quote-display {
+    font-size: 2.5rem; /* Adjust for large letters */
+    color: #9d7651; /* Same as the header/banner */
+    font-weight: bold;
+    padding: 1rem;
+    animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -112,8 +124,4 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.achievement-card {
-    animation: fadeIn 0.5s ease-in-out;
 }
