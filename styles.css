@@ -1,20 +1,18 @@
-/* Reset Styles */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #e7dcd1;
+    background-color: #e7dcd1; /* Off-white background */
     color: #333;
 }
 
-/* Header */
 header {
-    background-color: #9d7651;
+    background-color: #9d7651; /* Updated banner colour */
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -22,6 +20,7 @@ header {
 
 header h1 {
     font-size: 3rem;
+    margin: 0;
 }
 
 header nav {
@@ -39,21 +38,6 @@ header nav a:hover {
     text-decoration: underline;
 }
 
-/* Quote Section */
-#quote-container {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 1rem;
-}
-
-#quote-display {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #9d7651;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* About Me Section */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
@@ -64,8 +48,8 @@ header nav a:hover {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -75,21 +59,45 @@ header nav a:hover {
 }
 
 .achievement-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #9d7651;
+}
+
+.achievement-date {
+    font-size: 0.9rem;
+    color: #6c757d;
     margin-bottom: 1rem;
 }
 
 .achievement-description {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1rem;
 }
 
-/* Footer */
-footer {
+#quote-display {
     text-align: center;
+    margin: 1rem auto;
+    font-size: 1.5rem;
+    color: #9d7651;
     padding: 1rem 0;
+}
+
+#cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
     background-color: #9d7651;
-    color: #fff;
+    margin-left: 5px;
+    border-radius: 2px;
+    animation: fadeBlink 1s infinite;
+}
+
+@keyframes fadeBlink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }

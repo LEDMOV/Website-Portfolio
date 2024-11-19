@@ -4,33 +4,35 @@ const quotes = [
     "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
-const quoteDisplay = document.getElementById('quote-display');
-let quoteIndex = 0;
+const quoteText = document.getElementById('quote-text');
+let currentQuoteIndex = 0;
 
 function typeQuote(quote) {
-    const typingSpeed = 5000 / quote.length; // Adjust speed to fit 5 seconds
+    const totalTypingDuration = 5000; // 5 seconds
+    const charTypingInterval = totalTypingDuration / quote.length; // Adjust speed
     let charIndex = 0;
 
-    function type() {
+    function typeNextChar() {
         if (charIndex < quote.length) {
-            const char = quote[charIndex];
-            quoteDisplay.innerHTML += char;
+            quoteText.innerHTML += quote[charIndex];
             charIndex++;
-            const delay = (char === "." || char === "," || char === "!") ? 400 : typingSpeed;
-            setTimeout(type, delay);
+
+            // Brief pause after punctuation
+            const isPunctuation = ['.', ',', ';', '!', '?'].includes(quote[charIndex - 1]);
+            setTimeout(typeNextChar, isPunctuation ? charTypingInterval * 2 : charTypingInterval);
         } else {
-            // Pause after typing then show the next quote
-            setTimeout(() => showNextQuote(), 3000);
+            setTimeout(changeQuote, 3000); // Pause before changing quote
         }
     }
-    quoteDisplay.innerHTML = ""; // Clear previous quote
-    type();
+
+    typeNextChar();
 }
 
-function showNextQuote() {
-    quoteIndex = (quoteIndex + 1) % quotes.length; // Cycle through quotes
-    typeQuote(quotes[quoteIndex]);
+function changeQuote() {
+    quoteText.innerHTML = ''; // Clear current quote
+    currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Cycle through quotes
+    typeQuote(quotes[currentQuoteIndex]);
 }
 
-// Start with the first quote
-typeQuote(quotes[quoteIndex]);
+// Start typing the first quote
+typeQuote(quotes[currentQuoteIndex]);
