@@ -1,50 +1,36 @@
-// Quotes array
 const quotes = [
     "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
     "Software is like sex: it's better when it's free --Linus Torvalds",
     "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
-const quoteDisplay = document.getElementById("quote-display");
+const quoteDisplay = document.getElementById('quote-display');
+let quoteIndex = 0;
 
-let currentIndex = 0;
-
-function typeQuote() {
-    const quote = quotes[currentIndex];
-    const totalDuration = 5000; // Total time in ms
-    const charDelay = totalDuration / quote.length; // Calculate delay per character
+function typeQuote(quote) {
+    const typingSpeed = 5000 / quote.length; // Adjust speed to fit 5 seconds
     let charIndex = 0;
 
-    quoteDisplay.textContent = ""; // Clear the display
-    const typingInterval = setInterval(() => {
-        // Add the next character
-        quoteDisplay.textContent += quote[charIndex];
-        charIndex++;
-
-        // Pause briefly for punctuation
-        if ([".", ",", ":", ";", "!"].includes(quote[charIndex - 1])) {
-            clearInterval(typingInterval); // Pause for punctuation
-            setTimeout(() => typeNextChar(), 200); // Resume typing
+    function type() {
+        if (charIndex < quote.length) {
+            const char = quote[charIndex];
+            quoteDisplay.innerHTML += char;
+            charIndex++;
+            const delay = (char === "." || char === "," || char === "!") ? 400 : typingSpeed;
+            setTimeout(type, delay);
         } else {
-            typeNextChar();
+            // Pause after typing then show the next quote
+            setTimeout(() => showNextQuote(), 3000);
         }
-
-        function typeNextChar() {
-            if (charIndex < quote.length) {
-                charIndex++;
-            } else {
-                // Typing finished
-                clearInterval(typingInterval);
-                setTimeout(showNextQuote, 3000); // Wait 3 seconds before switching quotes
-            }
-        }
-    }, charDelay);
+    }
+    quoteDisplay.innerHTML = ""; // Clear previous quote
+    type();
 }
 
 function showNextQuote() {
-    currentIndex = (currentIndex + 1) % quotes.length; // Cycle through quotes
-    typeQuote();
+    quoteIndex = (quoteIndex + 1) % quotes.length; // Cycle through quotes
+    typeQuote(quotes[quoteIndex]);
 }
 
-// Start typing the first quote
-typeQuote();
+// Start with the first quote
+typeQuote(quotes[quoteIndex]);

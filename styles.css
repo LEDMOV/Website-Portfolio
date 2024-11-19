@@ -1,19 +1,20 @@
-/* General Reset */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #e7dcd1; /* Off white/beige background */
+    background-color: #e7dcd1;
     color: #333;
 }
 
-/* Header styles */
+/* Header */
 header {
-    background-color: #9d7651; /* Updated banner colour */
+    background-color: #9d7651;
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -21,7 +22,6 @@ header {
 
 header h1 {
     font-size: 3rem;
-    margin: 0;
 }
 
 header nav {
@@ -39,20 +39,33 @@ header nav a:hover {
     text-decoration: underline;
 }
 
-/* Container styles */
+/* Quote Section */
+#quote-container {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+#quote-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #9d7651;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* About Me Section */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* Achievement card styles */
 .achievement-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
     padding: 1.5rem;
+    margin-bottom: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -62,82 +75,21 @@ header nav a:hover {
 }
 
 .achievement-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #9d7651; /* Matches the updated banner colour */
-}
-
-.achievement-date {
-    font-size: 0.9rem;
-    color: #6c757d;
+    font-size: 1.8rem;
+    color: #9d7651;
     margin-bottom: 1rem;
 }
 
 .achievement-description {
     font-size: 1rem;
     line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
-/* Button styles */
-.btn {
-    display: inline-block;
-    padding: 0.8rem 1.2rem;
-    margin-top: 1rem;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #fff;
-    background-color: #9d7651; /* Matches the banner colour */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #825c3d; /* Slightly darker hover colour */
-}
-
-/* Footer styles */
+/* Footer */
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #f1f1f1;
-    color: #6c757d;
-}
-
-/* Animation for cards */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.achievement-card {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Quote section styles */
-#quote-section {
-    text-align: center;
-    margin: 2rem auto;
-}
-
-#quote-display {
-    font-size: 1.5rem; /* Adjust the size as needed */
-    font-weight: bold;
-    line-height: 1.6;
-    color: #333; /* Matches your text colour */
-    max-width: 800px;
-    margin: 0 auto;
-    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
-}
-
-/* Optional: Add unique styles for larger screens */
-@media (min-width: 768px) {
-    #quote-display {
-        font-size: 2rem;
-    }
+    background-color: #9d7651;
+    color: #fff;
 }
