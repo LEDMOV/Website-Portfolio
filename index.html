@@ -5,40 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script> <!-- Add your JavaScript file -->
 </head>
 <body>
     <header>
         <h1>Welcome to My Website</h1>
         <nav>
+            <a href="about.html">About Me</a>
             <a href="blog.html">Blog</a>
             <a href="qualifications.html">Qualifications</a>
-            <a href="schoollife.html">School Life</a>
         </nav>
     </header>
 
-    <!-- Quote section -->
-    <section id="quote-section">
-        <div id="quote-display"></div>
-    </section>
+    <!-- Quote Section -->
+    <div id="quote-section">
+        <p id="quote-display"></p>
+    </div>
 
-    <!-- About Me section -->
     <main class="container">
-        <div class="achievement-card">
-            <h2 class="achievement-title">About Me</h2>
-            <p class="achievement-date">19/11/2024</p>
-            <p class="achievement-description">
-                Hi, I'm Alfie Corthine, an aspiring computer scientist with a passion for creating solutions to generally stupid & unnecessary problems. Currently an A-level student studying:
-            </p>
-            <li>Maths, Computer Science, Economics, and BTEC Engineering</li>
-            <p>I enjoy tackling challenges that involve programming, hardware, and problem-solving.</p>
-            <p>My interests range from developing websites and apps to experimenting with innovative projects using a Raspberry Pi...</p>
-            <a href="#" class="btn">Read More</a>
-        </div>
+        <!-- Your other content goes here -->
     </main>
 
     <footer>
         <p>Designed by Alfie Corthine &copy; 2024</p>
     </footer>
+
+    <script>
+        // Array of quotes
+        const quotes = [
+            "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
+            "Software is like sex: it's better when it's free --Linus Torvalds",
+            "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
+        ];
+
+        // Randomly pick a quote
+        const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+        // Set the quote to be displayed in the element
+        const quoteElement = document.getElementById('quote-display');
+        let currentIndex = 0;
+
+        // Calculate typing speed based on the quote length (typing in 5 seconds)
+        const typingSpeed = 50; // Default typing speed (characters per 100ms)
+        const totalTime = 5000; // 5 seconds
+        const typingInterval = totalTime / quote.length; // Adjust time per character
+
+        // Function to type out the quote
+        function typeQuote() {
+            if (currentIndex < quote.length) {
+                quoteElement.innerHTML += quote.charAt(currentIndex);
+                currentIndex++;
+                setTimeout(typeQuote, typingInterval);
+            }
+        }
+
+        // Start typing the quote
+        typeQuote();
+    </script>
 </body>
 </html>
