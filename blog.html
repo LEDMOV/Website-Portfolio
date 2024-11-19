@@ -5,6 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - My Achievements</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // JavaScript to handle sorting and searching
+        document.addEventListener("DOMContentLoaded", function() {
+            const postsContainer = document.getElementById("posts-container");
+            const searchInput = document.getElementById("search-input");
+            const sortSelect = document.getElementById("sort-select");
+
+            // Array of blog posts (you can add more posts here)
+            const posts = [
+                {
+                    title: "// Start or end of an era?",
+                    date: "19/11/24",
+                    description: "Just made this simple website to document my life...",
+                },
+                {
+                    title: "Exploring Web Development",
+                    date: "15/11/24",
+                    description: "Learning HTML, CSS, and JavaScript...",
+                },
+                {
+                    title: "A Day in the Life of a Student",
+                    date: "12/11/24",
+                    description: "Talking about my experience in school and balancing life...",
+                }
+            ];
+
+            // Function to render posts
+            function renderPosts(postsToRender) {
+                postsContainer.innerHTML = '';
+                postsToRender.forEach(post => {
+                    const postElement = document.createElement("div");
+                    postElement.classList.add("achievement-card");
+
+                    postElement.innerHTML = `
+                        <h2 class="achievement-title">${post.title}</h2>
+                        <p class="achievement-date">${post.date}</p>
+                        <p class="achievement-description">${post.description}</p>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            }
+
+            // Function to search posts by title
+            function searchPosts() {
+                const searchText = searchInput.value.toLowerCase();
+                const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(searchText));
+                renderPosts(filteredPosts);
+            }
+
+            // Function to sort posts by date
+            function sortPosts(order) {
+                const sortedPosts = [...posts].sort((a, b) => {
+                    const dateA = new Date(a.date.split("/").reverse().join("-"));
+                    const dateB = new Date(b.date.split("/").reverse().join("-"));
+                    return order === 'asc' ? dateA - dateB : dateB - dateA;
+                });
+                renderPosts(sortedPosts);
+            }
+
+            // Event listeners
+            searchInput.addEventListener("input", searchPosts);
+            sortSelect.addEventListener("change", function() {
+                sortPosts(sortSelect.value);
+            });
+
+            // Initial render
+            renderPosts(posts);
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -15,30 +84,23 @@
             <a href="schoollife.html">School Life</a>
         </nav>
     </header>
+
     <main class="container">
-        <div class="achievement-card">
-            <h2 class="achievement-title">// Start or end of an era? </h2>
-            <p class="achievement-date">19/11/24</p>
-            <p class="achievement-description">
-                Just made this simple website to document my life, what I'm doing and how I'm doing it, either I'm going to do this everyday and eventually fill the internet full of my spewing garbage or I'm going to forget about it, I hope not kek.
-            </p>
+        <!-- Search and Sort Section -->
+        <div class="search-sort">
+            <input type="text" id="search-input" placeholder="Search blog titles..." />
+            <select id="sort-select">
+                <option value="asc">Sort by Date (Asc)</option>
+                <option value="desc">Sort by Date (Desc)</option>
+            </select>
         </div>
-        <!-- Add more blog posts as needed -->
-        <div class="achievement-card">
-            <h2 class="achievement-title">[Blog Post Title]</h2>
-            <p class="achievement-date">[Date]</p>
-            <p class="achievement-description">
-                [Blog post content goes here. Write about a specific experience, idea, or project.]
-            </p>
-        </div>
-        <div class="achievement-card">
-            <h2 class="achievement-title">[Blog Post Title]</h2>
-            <p class="achievement-date">[Date]</p>
-            <p class="achievement-description">
-                [Blog post content goes here. Write about a specific experience, idea, or project.]
-            </p>
+
+        <!-- Blog Post Container -->
+        <div id="posts-container">
+            <!-- Blog posts will be injected here by JavaScript -->
         </div>
     </main>
+
     <footer>
         <p>Designed by Alfie Corthine &copy; 2024</p>
     </footer>
