@@ -30,55 +30,50 @@
     </footer>
 
     <script>
-        // Array of quotes
         const quotes = [
             "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
             "Software is like sex: it's better when it's free --Linus Torvalds",
             "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
         ];
 
-        // Function to type out the quote
+        const totalTypingTime = 5000; // Total time to finish typing a quote (ms)
+        const punctuationPause = 200; // Extra pause for punctuation (ms)
+        const afterTypingPause = 3000; // Pause after typing before changing quote (ms)
+
         function typeQuote(quote) {
-            const quoteElement = document.getElementById('quote-display');
+            const quoteElement = document.getElementById("quote-display");
+            quoteElement.innerHTML = ""; // Clear the current quote
             let currentIndex = 0;
-            let typingInterval = 50;  // Default typing speed (ms per char)
-            const totalTime = 5000;  // Total typing time in ms (5 seconds)
 
-            // Function to check for punctuation and add a brief pause
-            function punctuationPause(char) {
-                if (/[.,!?]/.test(char)) {
-                    return 200;  // 200ms pause for punctuation
-                }
-                return 50;  // Default pause (no punctuation)
-            }
+            // Calculate base typing interval (adjusted for punctuation pauses)
+            const baseInterval = totalTypingTime / quote.length;
 
-            // Typing logic with pause after punctuation
             function typeNextChar() {
                 if (currentIndex < quote.length) {
-                    const currentChar = quote.charAt(currentIndex);
+                    const currentChar = quote[currentIndex];
                     quoteElement.innerHTML += currentChar;
                     currentIndex++;
 
-                    const pauseTime = punctuationPause(currentChar);
-                    setTimeout(typeNextChar, typingInterval + pauseTime);  // Add delay for punctuation
+                    // Add punctuation pause where necessary
+                    const isPunctuation = /[.,!?]/.test(currentChar);
+                    const delay = isPunctuation ? baseInterval + punctuationPause : baseInterval;
+
+                    setTimeout(typeNextChar, delay);
                 } else {
-                    // After the quote is fully typed, wait for 3 seconds, then change the quote
-                    setTimeout(changeQuote, 3000);  // 3 seconds delay
+                    // After quote is fully typed, pause briefly and change quote
+                    setTimeout(changeQuote, afterTypingPause);
                 }
             }
 
-            typeNextChar();  // Start typing the quote
+            typeNextChar();
         }
 
-        // Function to change the quote
         function changeQuote() {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            const quoteElement = document.getElementById('quote-display');
-            quoteElement.innerHTML = '';  // Clear the current quote
-            typeQuote(randomQuote);  // Type the next quote
+            typeQuote(randomQuote);
         }
 
-        // Start the first typing animation
+        // Start the first quote
         changeQuote();
     </script>
 </body>

@@ -7,12 +7,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e7dcd1;  /* Off-white/beige background */
+    background-color: #e7dcd1; /* Off white/beige background */
     color: #333;
 }
 
+/* Header styles */
 header {
-    background-color: #9d7651;  /* Banner color */
+    background-color: #9d7651; /* Updated banner colour */
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -38,12 +39,14 @@ header nav a:hover {
     text-decoration: underline;
 }
 
+/* Container styles */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
+/* Achievement card styles */
 .achievement-card {
     background-color: #fff;
     border-radius: 8px;
@@ -61,7 +64,7 @@ header nav a:hover {
 .achievement-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #9d7651;  /* Match color with banner */
+    color: #9d7651; /* Matches the updated banner colour */
 }
 
 .achievement-date {
@@ -73,11 +76,9 @@ header nav a:hover {
 .achievement-description {
     font-size: 1rem;
     line-height: 1.6;
-    margin-top: 1rem;
-    text-indent: 2rem;
-    margin-bottom: 1.5rem;
 }
 
+/* Button styles */
 .btn {
     display: inline-block;
     padding: 0.8rem 1.2rem;
@@ -85,15 +86,16 @@ header nav a:hover {
     font-size: 1rem;
     text-decoration: none;
     color: #fff;
-    background-color: #9d7651;  /* Button color */
+    background-color: #9d7651; /* Matches the banner colour */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #7f5f3a;  /* Darker hover color */
+    background-color: #825c3d; /* Slightly darker hover colour */
 }
 
+/* Footer styles */
 footer {
     text-align: center;
     padding: 1rem 0;
@@ -101,20 +103,7 @@ footer {
     color: #6c757d;
 }
 
-/* Quote Section Styling */
-#quote-section {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-#quote-display {
-    font-size: 1.5rem; /* Adjust for large letters */
-    color: #9d7651; /* Same as the header/banner */
-    font-weight: bold;
-    padding: 1rem;
-    animation: fadeIn 1s ease-in-out;
-}
-
+/* Animation for cards */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -123,5 +112,32 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.achievement-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Quote section styles */
+#quote-section {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+#quote-display {
+    font-size: 1.5rem; /* Adjust the size as needed */
+    font-weight: bold;
+    line-height: 1.6;
+    color: #333; /* Matches your text colour */
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Optional: Add unique styles for larger screens */
+@media (min-width: 768px) {
+    #quote-display {
+        font-size: 2rem;
     }
 }
