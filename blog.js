@@ -1,10 +1,10 @@
 // Blog posts array
 const posts = [
     {
-        title: "// Start or end of an era?",
+        title: "Start or end of an era?",
         date: "19/11/24",
         description: `Just made this simple website to document my life, School career and Qualifications. 
-                      Makes it easy for me to look back and see in what detail I've done in the past, but I hope it also gives employers or researchers an easy way to get into my head.<br>None of that mind games candidates love to play with employers.`,
+                      Makes it easy for me to look back and see in what detail I've done in the past, but I hope it also gives employers or researchers an easy way to get into my head.<br>None of those mind games candidates love to play with employers.`,
     },
     {
         title: "Another Milestone",

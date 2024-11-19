@@ -7,12 +7,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #e7dcd1;  /* Changed background color to off-white/beige */
     color: #333;
 }
 
 header {
-    background-color: #007bff;
+    background-color: #9d7651;  /* Changed header banner to the new brownish color */
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -61,7 +61,7 @@ header nav a:hover {
 .achievement-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #007bff;
+    color: #9d7651;  /* Changed to match the new brownish color */
 }
 
 .achievement-date {
@@ -75,9 +75,9 @@ header nav a:hover {
     line-height: 1.6;
     margin-top: 1rem;
 
-    /* Added rules for indent and spacing */
-    text-indent: 2rem; /* Indent first line of each paragraph */
-    margin-bottom: 1.5rem; /* Add space between paragraphs */
+    /* Indentation and spacing */
+    text-indent: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .btn {
@@ -87,13 +87,13 @@ header nav a:hover {
     font-size: 1rem;
     text-decoration: none;
     color: #fff;
-    background-color: #007bff;
+    background-color: #9d7651;  /* Button background changed to the new brownish color */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #7f5f3a;  /* Slightly darker shade for hover */
 }
 
 footer {
