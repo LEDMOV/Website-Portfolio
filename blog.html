@@ -74,8 +74,9 @@
                 sortPosts(sortSelect.value);
             });
 
-            // Initial render
-            renderPosts(posts);
+            // Initial setup: Sort posts in descending order and set dropdown
+            sortPosts('desc');
+            sortSelect.value = 'desc'; // Set dropdown to Descending
         });
     </script>
 </head>
