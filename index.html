@@ -3,78 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>About Me</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>About Me</h1>
         <nav>
-            <a href="about.html">About Me</a>
             <a href="blog.html">Blog</a>
             <a href="qualifications.html">Qualifications</a>
+            <a href="schoollife.html">School Life</a>
         </nav>
     </header>
-
-    <!-- Quote Section -->
-    <div id="quote-section">
-        <p id="quote-display"></p>
-    </div>
-
     <main class="container">
-        <!-- Your other content goes here -->
+        <section id="quote-section">
+            <div id="quote-display"></div>
+        </section>
+        <div class="achievement-card">
+            <h2 class="achievement-title">About Me</h2>
+            <p class="achievement-date">19/11/2024</p>
+            <p class="achievement-description">
+                Hi, I'm Alfie Corthine, an aspiring computer scientist with a passion for creating solutions to generally stupid & unnecessary problems. Currently an A-level student studying:
+            </p>
+            <li> Maths, Computer Science, Economics, and BTEC Engineering </li>
+            <p>
+                I enjoy tackling challenges that involve programming, hardware, and problem-solving.
+            </p>
+            <p>
+                My interests range from developing websites and apps to experimenting with innovative projects using a Raspberry Pi. I believe in using technology to address real-world problems, whether it's through designing efficient systems or exploring the possibilities of AI.
+            </p>
+            <p>
+                Beyond academics, I’m always curious to learn new skills, refine my craft, and collaborate on projects that make an impact. This site is a space where I document my journey, achievements, and ideas as I work towards building a future in the tech industry.
+            </p>
+            <a href="#" class="btn">Read More</a>
+        </div>
     </main>
-
     <footer>
         <p>Designed by Alfie Corthine &copy; 2024</p>
     </footer>
-
     <script>
-        const quotes = [
-            "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
-            "Software is like sex: it's better when it's free --Linus Torvalds",
-            "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
-        ];
-
-        const totalTypingTime = 5000; // Total time to finish typing a quote (ms)
-        const punctuationPause = 200; // Extra pause for punctuation (ms)
-        const afterTypingPause = 3000; // Pause after typing before changing quote (ms)
-
-        function typeQuote(quote) {
-            const quoteElement = document.getElementById("quote-display");
-            quoteElement.innerHTML = ""; // Clear the current quote
-            let currentIndex = 0;
-
-            // Calculate base typing interval (adjusted for punctuation pauses)
-            const baseInterval = totalTypingTime / quote.length;
-
-            function typeNextChar() {
-                if (currentIndex < quote.length) {
-                    const currentChar = quote[currentIndex];
-                    quoteElement.innerHTML += currentChar;
-                    currentIndex++;
-
-                    // Add punctuation pause where necessary
-                    const isPunctuation = /[.,!?]/.test(currentChar);
-                    const delay = isPunctuation ? baseInterval + punctuationPause : baseInterval;
-
-                    setTimeout(typeNextChar, delay);
-                } else {
-                    // After quote is fully typed, pause briefly and change quote
-                    setTimeout(changeQuote, afterTypingPause);
-                }
-            }
-
-            typeNextChar();
-        }
-
-        function changeQuote() {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            typeQuote(randomQuote);
-        }
-
-        // Start the first quote
-        changeQuote();
+        // Insert the JavaScript code here
     </script>
 </body>
 </html>
