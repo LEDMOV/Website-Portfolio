@@ -4,7 +4,8 @@ const quotes = [
     "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
-const quoteContainer = document.getElementById("quote-container");
+const quoteContainer = document.getElementById("quote-text");
+const cursor = document.getElementById("cursor");
 
 let currentQuoteIndex = 0;
 let typingInterval;
@@ -21,12 +22,12 @@ function typeQuote(quote) {
     const typingSpeed = calculateTypingSpeed(quote.length);
 
     // Clear previous content
-    quoteContainer.innerHTML = "<span id='quote'></span><span class='blinking-caret'>|</span>";
-    const quoteElement = document.getElementById("quote");
+    quoteContainer.innerHTML = "";
+    cursor.style.opacity = 1;
 
     typingInterval = setInterval(() => {
         if (index < quote.length) {
-            quoteElement.textContent += quote[index];
+            quoteContainer.textContent += quote[index];
 
             // Add a slight pause for punctuation
             if (quote[index] === "." || quote[index] === "," || quote[index] === "—") {
@@ -50,7 +51,7 @@ function typeQuote(quote) {
 
     function typeNextChar() {
         if (index < quote.length) {
-            quoteElement.textContent += quote[index];
+            quoteContainer.textContent += quote[index];
             index++;
         }
     }
@@ -58,3 +59,8 @@ function typeQuote(quote) {
 
 // Start typing the first quote
 typeQuote(quotes[currentQuoteIndex]);
+
+// Make the caret blink
+setInterval(() => {
+    cursor.style.opacity = cursor.style.opacity === '1' ? '0' : '1';
+}, 500);
