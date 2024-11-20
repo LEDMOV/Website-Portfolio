@@ -1,39 +1,60 @@
-// Quotes to display
 const quotes = [
     "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
     "Software is like sex: it's better when it's free --Linus Torvalds",
     "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
-// Selecting the elements where the quote will be typed
-const quoteText = document.getElementById('quote-text');
-const cursor = document.getElementById('cursor');
+const quoteContainer = document.getElementById("quote-container");
 
-// Function to type out a quote
+let currentQuoteIndex = 0;
+let typingInterval;
+
+// Function to calculate dynamic typing speed
+function calculateTypingSpeed(quoteLength) {
+    // Total typing time is 5 seconds, distribute time equally across characters
+    return 5000 / quoteLength; // in milliseconds
+}
+
+// Function to type out the quote
 function typeQuote(quote) {
-    quoteText.textContent = '';  // Clear previous quote
     let index = 0;
-    const typingSpeed = 5000;  // Time to complete typing the quote (in milliseconds)
-    const intervalTime = typingSpeed / quote.length;  // Calculate the speed based on quote length
+    const typingSpeed = calculateTypingSpeed(quote.length);
 
-    const typingInterval = setInterval(() => {
-        quoteText.textContent += quote[index];
-        index++;
-        if (index === quote.length) {
+    // Clear previous content
+    quoteContainer.innerHTML = "<span id='quote'></span><span class='blinking-caret'>|</span>";
+    const quoteElement = document.getElementById("quote");
+
+    typingInterval = setInterval(() => {
+        if (index < quote.length) {
+            quoteElement.textContent += quote[index];
+
+            // Add a slight pause for punctuation
+            if (quote[index] === "." || quote[index] === "," || quote[index] === "—") {
+                clearInterval(typingInterval);
+                setTimeout(() => {
+                    typingInterval = setInterval(() => {
+                        typeNextChar();
+                    }, typingSpeed);
+                }, 300); // 300ms pause for punctuation
+            }
+            index++;
+        } else {
             clearInterval(typingInterval);
-            setTimeout(changeQuote, 3000); // Wait 3 seconds after quote finishes before changing
+            // After 3 seconds, change to the next quote
+            setTimeout(() => {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Cycle through quotes
+                typeQuote(quotes[currentQuoteIndex]);
+            }, 3000);
         }
-    }, intervalTime);
+    }, typingSpeed);
+
+    function typeNextChar() {
+        if (index < quote.length) {
+            quoteElement.textContent += quote[index];
+            index++;
+        }
+    }
 }
 
-// Function to change the quote after 3 seconds
-function changeQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    typeQuote(quotes[randomIndex]);
-}
-
-// Start by typing the first quote
-typeQuote(quotes[0]);
-
-// Set the quote typing to change every 8 seconds
-setInterval(changeQuote, 8000);
+// Start typing the first quote
+typeQuote(quotes[currentQuoteIndex]);
