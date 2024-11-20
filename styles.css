@@ -101,7 +101,7 @@ footer {
 /* Quote Typing Styling */
 #quote-display {
     font-size: 2rem;
-    font-family: 'Courier New', monospace;
+    font-family: Arial, monospace;
     white-space: nowrap;
     overflow: hidden;
     margin-top: 30px;
