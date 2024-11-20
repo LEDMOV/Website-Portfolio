@@ -1,7 +1,7 @@
 const quotes = [
     "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
     "Software is like sex: it's better when it's free --Linus Torvalds",
-    "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than the pirates --Gabe Newell"
+    "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
 ];
 
 const quoteContainer = document.getElementById("quote-text");
@@ -9,6 +9,7 @@ const cursor = document.getElementById("cursor");
 
 let currentQuoteIndex = 0;
 let typingInterval;
+let isTyping = false; // To avoid overlapping typing
 
 // Function to calculate dynamic typing speed
 function calculateTypingSpeed(quoteLength) {
@@ -18,12 +19,15 @@ function calculateTypingSpeed(quoteLength) {
 
 // Function to type out the quote
 function typeQuote(quote) {
+    if (isTyping) return; // Prevent multiple typing intervals
+
     let index = 0;
     const typingSpeed = calculateTypingSpeed(quote.length);
 
     // Clear previous content
     quoteContainer.innerHTML = "";
     cursor.style.opacity = 1;
+    isTyping = true;
 
     typingInterval = setInterval(() => {
         if (index < quote.length) {
@@ -41,7 +45,7 @@ function typeQuote(quote) {
             index++;
         } else {
             clearInterval(typingInterval);
-            // After 3 seconds, change to the next quote
+            // After typing, wait 3 seconds before changing quote
             setTimeout(() => {
                 currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Cycle through quotes
                 typeQuote(quotes[currentQuoteIndex]);
