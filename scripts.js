@@ -1,7 +1,7 @@
 const quotes = [
     "Whoever loves discipline loves knowledge, but whoever hates correction is stupid --Proverbs 12:1 NIV",
     "Software is like sex: it's better when it's free --Linus Torvalds",
-    "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than what they're receiving from the pirates --Gabe Newell"
+    "The easiest way to stop piracy is not by putting antipiracy technology to work. It's by giving those people a service that's better than the pirate's --Gabe Newell"
 ];
 
 const quoteContainer = document.getElementById("quote-text");
