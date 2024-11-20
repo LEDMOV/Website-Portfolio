@@ -13,8 +13,7 @@ let isTyping = false; // To avoid overlapping typing
 
 // Function to calculate dynamic typing speed
 function calculateTypingSpeed(quoteLength) {
-    // Total typing time is 5 seconds, distribute time equally across characters
-    return 5000 / quoteLength; // in milliseconds
+    return 5000 / quoteLength; // Typing should take 5 seconds for each quote
 }
 
 // Function to type out the quote
